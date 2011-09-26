@@ -1,0 +1,30 @@
+<HTML>
+<HEAD></HEAD>
+	<h1>Tweetin</h1>
+	{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+	    <ul class=flashes>
+	    {% for message in messages %}
+	      <li>{{ message }}</li>
+	    {% endfor %}
+	    </ul>
+	  {% endif %}
+	{% endwith %}
+	<body>
+	<form method="POST" name="tweet" action="/tweet">
+		{{ form.csrf }}
+		<table>
+		<tr>
+			<td>{{ form.tweet.label }}</td> 
+		</tr>
+		
+		<tr>
+			<td>{{ form.tweet(size=50) }}</td>
+		</tr>
+
+		</table>
+
+		<input type="submit" value="Go">
+	</form>
+</body>
+</HTML>

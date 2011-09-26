@@ -1,0 +1,9 @@
+{% if current_user.username %}
+{{ current_user.username | capitalize }} - <a href="#" id="tweet">Tweet</a> - <a href="{{ url_for('logout') }}">Logout</a>
+	<div id="tweet_form">
+		<input type="text" id="tweet_message"> <input type="submit" id="tweet_submit" value="tweet">
+	</div>
+{% else %}
+	<a href="{{ url_for('login') }}">Login</a> - <a href="{{ url_for('register') }}">Register</a>
+{% endif %}
+

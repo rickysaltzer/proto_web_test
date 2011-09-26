@@ -1,0 +1,26 @@
+<HTML>
+<HEAD>
+        {% assets "js_all" %}
+                <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+        {% endassets %}
+</HEAD>
+{% include "messages.html" %}
+{% include "toolbar.html" %}
+<div id="user_tweets">
+{% if tweets %}
+{% for tweet in tweets %}
+<h3> {{ tweet.user.username }} @ {{ tweet.created.strftime("%H:%M:%S") }} </h3>
+
+		{% if current_user.username %}
+			{% if current_user.username in tweet.message and tweet.user.username != current_user.username %}
+				<font color="red">{{ tweet.message }}</font>
+		{% else %}
+			{{ tweet.message }}
+		{% endif %}
+		{% endif %}
+<hr>
+{% endfor %}
+{% endif %}
+</div>
+</body>
+</HTML>

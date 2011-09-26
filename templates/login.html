@@ -1,0 +1,29 @@
+<HTML>
+<HEAD></HEAD>
+	<h1>Login</h1>
+	{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+	    <ul class=flashes>
+	    {% for message in messages %}
+	      <li>{{ message }}</li>
+	    {% endfor %}
+	    </ul>
+	  {% endif %}
+	{% endwith %}
+	<body>
+	<form method="POST" name="login" action="/login">
+		{{ form.csrf }}
+		<table>
+		<tr>
+			<td>{{ form.username.label }}</td> <td>{{ form.username }}</td>
+		</tr>
+
+		<tr>
+			<td>{{ form.password.label }}</td> <td>{{ form.password }}</td>
+		</tr>
+		</table>
+
+		<input type="submit" value="Go">
+	</form>
+</body>
+</HTML>
