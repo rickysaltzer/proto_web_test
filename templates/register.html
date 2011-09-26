@@ -1,15 +1,7 @@
 <HTML>
 <HEAD></HEAD>
 	<h1>Registration</h1>
-		{% with messages = get_flashed_messages() %}
-	  {% if messages %}
-	    <ul class=flashes>
-	    {% for message in messages %}
-	      <li>{{ message }}</li>
-	    {% endfor %}
-	    </ul>
-	  {% endif %}
-	{% endwith %}
+	{% include "messages.html" %}
 
 <body>
 	<form method="POST" name="register" action="/register">
